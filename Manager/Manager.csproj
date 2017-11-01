@@ -97,6 +97,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
+    <Compile Include="Drone.cs" />
+    <Compile Include="FlowerField.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
