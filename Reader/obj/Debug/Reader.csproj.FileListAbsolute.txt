@@ -1,0 +1,10 @@
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Reader.exe.config
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Reader.exe
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Reader.pdb
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Microsoft.ServiceBus.dll
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Newtonsoft.Json.dll
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Microsoft.ServiceBus.xml
+D:\Dropbox\C# projects\RoBee\Reader\bin\Debug\Newtonsoft.Json.xml
+D:\Dropbox\C# projects\RoBee\Reader\obj\Debug\Reader.csprojResolveAssemblyReference.cache
+D:\Dropbox\C# projects\RoBee\Reader\obj\Debug\Reader.exe
+D:\Dropbox\C# projects\RoBee\Reader\obj\Debug\Reader.pdb
