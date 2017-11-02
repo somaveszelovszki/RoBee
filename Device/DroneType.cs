@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Device
-{
-   public enum DroneType { Scout, Pollinate, Idle };
+namespace RoBee {
+	namespace Device {
+		public enum DroneType { Scout, Pollinate, Idle };
+	}
 }

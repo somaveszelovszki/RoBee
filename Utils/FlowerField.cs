@@ -1,7 +1,5 @@
-﻿using Detail;
-
-namespace RoBee {
-	namespace Manager {
+﻿namespace RoBee {
+	namespace Utils {
 		/// <summary>
 		/// Contains data of a flower field where the drones will fly for pollinating the flowers.
 		/// </summary>
