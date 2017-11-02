@@ -20,6 +20,10 @@
 				Loc = loc;
 				Area = area;
 			}
+
+			public double getPollinationTime() {
+				return Area * POLLINATION_RATE;
+			}
 		}
 	}
 }
