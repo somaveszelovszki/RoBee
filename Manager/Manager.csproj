@@ -99,8 +99,6 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="Drone.cs" />
-    <Compile Include="FlowerField.cs" />
-    <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrajectoryPlanner.cs" />
@@ -108,6 +106,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{8a8f99ad-bdfe-4b2c-9e88-50b1fa6628be}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

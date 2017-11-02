@@ -1,6 +1,4 @@
-﻿using Manager;
-
-using Microsoft.Azure.Devices;
+﻿using Microsoft.Azure.Devices;
 using Microsoft.ServiceBus.Messaging;
 
 using System;
@@ -8,6 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+
+using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {

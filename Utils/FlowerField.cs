@@ -3,7 +3,7 @@
 		/// <summary>
 		/// Contains data of a flower field where the drones will fly for pollinating the flowers.
 		/// </summary>
-		class FlowerField {
+		public class FlowerField {
 
 			/// <summary>
 			/// Location of the flower field (latitude, longitude).

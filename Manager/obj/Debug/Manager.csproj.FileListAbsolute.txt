@@ -29,3 +29,5 @@ D:\Dropbox\C# projects\RoBee\Manager\obj\Debug\Manager.exe
 D:\Dropbox\C# projects\RoBee\Manager\obj\Debug\Manager.pdb
 D:\Dropbox\C# projects\RoBee\Manager\bin\Debug\Microsoft.ServiceBus.dll
 D:\Dropbox\C# projects\RoBee\Manager\bin\Debug\Microsoft.ServiceBus.xml
+D:\Dropbox\C# projects\RoBee\Manager\bin\Debug\Utils.dll
+D:\Dropbox\C# projects\RoBee\Manager\bin\Debug\Utils.pdb

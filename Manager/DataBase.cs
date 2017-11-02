@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Manager;
+
+using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {
