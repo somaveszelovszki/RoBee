@@ -24,6 +24,10 @@ namespace RoBee {
 			private static RegistryManager registryManager = RegistryManager.CreateFromConnectionString(connectionString);
 			private static ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
 
+			/// <summary>
+			/// Period time of trajectory sending.
+			/// </summary>
+			private static readonly TimeSpan EXEC_PERIOD = new TimeSpan(0, 0, 5); 
 
 			/// <summary>
 			/// Adds a device (typically a drone) to the registry.
@@ -56,32 +60,36 @@ namespace RoBee {
 			/// </summary>
 			/// <param name="deviceId">The device id</param>
 			/// <param name="message">The message to send</param>
-			private static void SendMessage(string deviceId, Message message) {
-				serviceClient.SendAsync(deviceId, message);
+			private static async Task SendMessage(string deviceId, Message message) {
+				// TODO commented out, because there are no devices in the Hub yet
+				//await serviceClient.SendAsync(deviceId, message);
 			}
 
 			/// <summary>
-			/// Sends trajectory plan (list of flower fields) to a given drone.
+			/// Sends trajectory plan to a given drone.
 			/// </summary>
-			/// <param name="droneId">The drone id</param>
-			/// <param name="flowerFields">The list of flower fields</param>
-			private static void SendDroneTrajectory(string droneId, List<FlowerField> flowerFields) {
+			/// <param name="drone">The drone</param>
+			/// <param name="trajectory">The trajectory</param>
+			private static async Task SendDroneTrajectory(Drone drone, Trajectory trajectory) {
 				List<Location<double>> locations = new List<Location<double>>();
-				foreach(FlowerField field in flowerFields)
+				foreach(FlowerField field in trajectory.FlowerFields)
 					locations.Add(field.Loc);
 
 				// sends JSON-serialized object
 				string json = JsonConvert.SerializeObject(locations);
-				Console.WriteLine("Sending message to '{0}': '{1}'", droneId, json);
-				SendMessage(droneId, new Message(Encoding.ASCII.GetBytes(json)));
+				Console.WriteLine("Sending message to '{0}': '{1}'", drone.Id, json);
+				await SendMessage(drone.Id, new Message(Encoding.ASCII.GetBytes(json)));
+
+				// updates drone object in the database
+				drone.AirTime += trajectory.getExecTime();
 			}
 
 			/// <summary>
 			/// Receives messages from ther drones.
 			/// These messages contain new flower fields that need to be added to the database.
 			/// </summary>
-			/// <param name="partition">The partition id.</param>
-			/// <returns>A task.</returns>
+			/// <param name="partition">The partition id</param>
+			/// <returns>A task</returns>
 			private static async Task ReceiveMessagesFromDeviceAsync(string partition) {
 				var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
 				while(true) {
@@ -92,9 +100,23 @@ namespace RoBee {
 					Console.WriteLine("New message. Partition: {0} Data: '{1}'", partition, data);
 
 					// deserializes flower field and adds it to the database
-					Location<double> newLoc = JsonConvert.DeserializeObject<Location<double>>(data);
-					Database.Instance.AddFlowerField(new FlowerField(newLoc));
+					FlowerField newFlowerField = JsonConvert.DeserializeObject<FlowerField>(data);
+					Database.Instance.AddFlowerField(newFlowerField);
 				}
+			}
+
+			/// <summary>
+			/// This task will handle periodic trajectory sending.
+			/// </summary>
+			private static async void PeriodicSendDroneTrajectories() {
+				// sends trajectories periodically until program has shut down
+				while(true) {
+					foreach(KeyValuePair<Drone, Trajectory> entry in new TrajectoryPlanner().calculate())
+						await SendDroneTrajectory(entry.Key, entry.Value);
+
+					await Task.Delay(EXEC_PERIOD);
+				}
+				
 			}
 
 			/// <summary>
@@ -102,10 +124,13 @@ namespace RoBee {
 			/// </summary>
 			/// <param name="args"></param>
 			static void Main(string[] args) {
+				// creates test database objects
 				Database.Instance.TestInit();
-				foreach(KeyValuePair<Drone, List<FlowerField>> entry in new TrajectoryPlanner().calculate())
-					SendDroneTrajectory(entry.Key.Id, entry.Value);
 
+				// start periodic trajectory sending
+				new Task(PeriodicSendDroneTrajectories).Start();
+
+				// initializes message receiving
 				InitMessageReceiving();
 			}
 		}
