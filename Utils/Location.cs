@@ -23,7 +23,7 @@ namespace RoBee {
 			/// <summary>
 			/// Adds two locations. (Adds the X and Y coordinates.)
 			/// </summary>
-			/// <param name="other">The other location.</param>
+			/// <param name="other">The other location</param>
 			/// <returns>The result of the addition.</returns>
 			public Location<T> Add(Location<T> other) {
 				return new Location<T>((dynamic) X + other.X, (dynamic) Y + other.Y);
@@ -32,7 +32,7 @@ namespace RoBee {
 			/// <summary>
 			/// Subtracts the other location from this one. (Subtracts the X and Y coordinates.)
 			/// </summary>
-			/// <param name="other">The other location.</param>
+			/// <param name="other">The other location</param>
 			/// <returns>The result of the subtraction.</returns>
 			public Location<T> Sub(Location<T> other) {
 				return new Location<T>((dynamic) X - other.X, (dynamic) Y - other.Y);
@@ -41,11 +41,15 @@ namespace RoBee {
 			/// <summary>
 			/// Calculates distance between two locations.
 			/// </summary>
-			/// <param name="other">The other location.</param>
+			/// <param name="other">The other location</param>
 			/// <returns>The distance.</returns>
 			public T distanceFrom(Location<T> other) {
 				Location<T> delta = Sub(other);
 				return Math.Sqrt((dynamic) delta.X * delta.X + (dynamic) delta.Y * delta.Y);
+			}
+
+			public override string ToString() {
+				return "Location(" + X + ", " + Y + ")";
 			}
 		}
 	}
