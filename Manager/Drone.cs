@@ -8,10 +8,12 @@ namespace RoBee {
 			public long TravelledDistance { get; set; }
 
 			public static Drone FromDevice(Device device) {
-				Drone drone = new Drone();
-				drone.Id = device.Id;
-				drone.TravelledDistance = 0L;
-				return drone;
+				return new Drone(device.Id);
+			}
+
+			public Drone(string id = null, long travelledDistance = 0L) {
+				Id = id;
+				TravelledDistance = travelledDistance;
 			}
 		}
 	}

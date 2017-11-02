@@ -12,8 +12,11 @@ namespace RoBee {
 			/// </summary>
 			public Location<double> Loc { get; set; }
 
-			public FlowerField(Location<double> loc) {
+			public double Area { get; set; }
+
+			public FlowerField(Location<double> loc = null, double area = 0.0) {
 				Loc = loc;
+				Area = area;
 			}
 		}
 	}
