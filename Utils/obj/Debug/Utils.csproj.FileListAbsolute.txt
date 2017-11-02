@@ -3,3 +3,9 @@ D:\Dropbox\C# projects\RoBee\Utils\bin\Debug\Utils.pdb
 D:\Dropbox\C# projects\RoBee\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
 D:\Dropbox\C# projects\RoBee\Utils\obj\Debug\Utils.dll
 D:\Dropbox\C# projects\RoBee\Utils\obj\Debug\Utils.pdb
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\bin\Debug\Utils.dll
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\bin\Debug\Utils.pdb
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\obj\Debug\Utils.dll
+C:\Users\Kristi\Documents\GitHub\RoBee\Utils\obj\Debug\Utils.pdb

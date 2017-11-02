@@ -195,3 +195,5 @@ C:\Users\Kristi\Documents\GitHub\RoBee\Device\obj\Debug\Device.exe
 C:\Users\Kristi\Documents\GitHub\RoBee\Device\obj\Debug\Device.pdb
 D:\Dropbox\C# projects\RoBee\Device\bin\Debug\Utils.dll
 D:\Dropbox\C# projects\RoBee\Device\bin\Debug\Utils.pdb
+C:\Users\Kristi\Documents\GitHub\RoBee\Device\bin\Debug\Utils.dll
+C:\Users\Kristi\Documents\GitHub\RoBee\Device\bin\Debug\Utils.pdb

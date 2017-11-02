@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DroneType.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="FlowerField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
