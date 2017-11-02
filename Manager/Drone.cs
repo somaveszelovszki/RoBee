@@ -4,6 +4,9 @@ using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {
+		/// <summary>
+		/// Contains data of a drone.
+		/// </summary>
 		class Drone {
 
 			/// <summary>

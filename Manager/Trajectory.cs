@@ -8,10 +8,24 @@ using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {
+		/// <summary>
+		/// Contains a trajectory object (an ordered list of flower fields).
+		/// </summary>
 		class Trajectory {
+			/// <summary>
+			/// List of flower fields in the trajectory.
+			/// </summary>
 			public List<FlowerField> FlowerFields = new List<FlowerField>();
+
+			/// <summary>
+			/// The Hive is where drones are stored. It is the starting and finishing point for all missions.
+			/// </summary>
 			public Location<double> Hive = Location<double>.ORIGO;
 
+			/// <summary>
+			/// Calculates execution time of the trajectory for a drone. It is based on the flower field distances, their area and the drones' speed.
+			/// </summary>
+			/// <returns>The calculated execution time.</returns>
 			public long getExecTime() {
 				long time = 0;
 				Location<double> prevLoc = Hive;

@@ -5,12 +5,25 @@ using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {
+		/// <summary>
+		/// Contains a virtual database with drones and flower fields in it.
+		/// This is a Singleton class - use Instance property to access it.
+		/// </summary>
 		class Database {
 
+			/// <summary>
+			/// The Singleton instance.
+			/// </summary>
 			private static Database instance;
 
+			/// <summary>
+			/// Virtual table containing drones.
+			/// </summary>
 			public List<Drone> Drones { get; } = new List<Drone>();
 
+			/// <summary>
+			/// Virtual table containing flower fields.
+			/// </summary>
 			public List<FlowerField> FlowerFields { get; } = new List<FlowerField>();
 
 			private Database() { }
@@ -38,6 +51,9 @@ namespace RoBee {
 				FlowerFields.Remove(flowerField);
 			}
 
+			/// <summary>
+			/// Fills virtual tables with test objects.
+			/// </summary>
 			public void TestInit() {
 				Drones.Add(new Drone("poll_drone_1"));
 				Drones.Add(new Drone("poll_drone_2"));

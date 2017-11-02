@@ -24,9 +24,10 @@ namespace RoBee {
 			private static RegistryManager registryManager = RegistryManager.CreateFromConnectionString(connectionString);
 			private static ServiceClient serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
 
-
+			/// <summary>
+			/// Period time of trajectory sending.
+			/// </summary>
 			private static readonly TimeSpan EXEC_PERIOD = new TimeSpan(0, 0, 5); 
-
 
 			/// <summary>
 			/// Adds a device (typically a drone) to the registry.
@@ -60,6 +61,7 @@ namespace RoBee {
 			/// <param name="deviceId">The device id</param>
 			/// <param name="message">The message to send</param>
 			private static async Task SendMessage(string deviceId, Message message) {
+				// TODO commented out, because there are no devices in the Hub yet
 				//await serviceClient.SendAsync(deviceId, message);
 			}
 
@@ -103,7 +105,11 @@ namespace RoBee {
 				}
 			}
 
+			/// <summary>
+			/// This task will handle periodic trajectory sending.
+			/// </summary>
 			private static async void PeriodicSendDroneTrajectories() {
+				// sends trajectories periodically until program has shut down
 				while(true) {
 					foreach(KeyValuePair<Drone, Trajectory> entry in new TrajectoryPlanner().calculate())
 						await SendDroneTrajectory(entry.Key, entry.Value);
@@ -118,10 +124,13 @@ namespace RoBee {
 			/// </summary>
 			/// <param name="args"></param>
 			static void Main(string[] args) {
+				// creates test database objects
 				Database.Instance.TestInit();
 
+				// start periodic trajectory sending
 				new Task(PeriodicSendDroneTrajectories).Start();
 
+				// initializes message receiving
 				InitMessageReceiving();
 			}
 		}
