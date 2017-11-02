@@ -103,7 +103,7 @@ namespace RoBee {
 			/// <param name="args"></param>
 			static void Main(string[] args) {
 				Database.Instance.TestInit();
-				foreach(KeyValuePair<Drone, List<FlowerField>> entry in Trajectories.calculate())
+				foreach(KeyValuePair<Drone, List<FlowerField>> entry in new TrajectoryPlanner().calculate())
 					SendDroneTrajectory(entry.Key.Id, entry.Value);
 
 				InitMessageReceiving();

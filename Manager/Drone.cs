@@ -5,15 +5,18 @@ namespace RoBee {
 		class Drone {
 			public string Id { get; set; }
 
-			public long TravelledDistance { get; set; }
+			/// <summary>
+			/// Stores the time the drone has spent in the air. [sec]
+			/// </summary>
+			public long AirTime { get; set; }
 
 			public static Drone FromDevice(Device device) {
 				return new Drone(device.Id);
 			}
 
-			public Drone(string id = null, long travelledDistance = 0L) {
+			public Drone(string id = null, long airTime = 0L) {
 				Id = id;
-				TravelledDistance = travelledDistance;
+				AirTime = airTime;
 			}
 		}
 	}
