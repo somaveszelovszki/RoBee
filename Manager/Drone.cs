@@ -4,9 +4,6 @@ using RoBee.Utils;
 
 namespace RoBee {
 	namespace Manager {
-		/// <summary>
-		/// Contains data of a drone.
-		/// </summary>
 		class Drone {
 
 			/// <summary>
@@ -24,7 +21,7 @@ namespace RoBee {
 			/// <summary>
 			/// Creates new Drone object from Device.
 			/// </summary>
-			/// <param name="device">The device</param>
+			/// <param name="device">The device.</param>
 			/// <returns>The new Drone object.</returns>
 			public static Drone FromDevice(Device device) {
 				return new Drone(device.Id);
@@ -38,15 +35,11 @@ namespace RoBee {
 			/// <summary>
 			/// Calculates travel time from two locations.
 			/// </summary>
-			/// <param name="start">The start location</param>
-			/// <param name="end">The end location</param>
+			/// <param name="start">The start location.</param>
+			/// <param name="end">The end location.</param>
 			/// <returns>The travel time.</returns>
-			public static long getTravelTime(Location<double> start, Location<double> end) {
-				return (long) (end.Sub(start).distanceFrom(Location<double>.ORIGO) / SPEED);
-			}
-
-			public override string ToString() {
-				return "Drone(id: " + Id + ", airTime: " + AirTime + ")";
+			public double getTravelTime(Location<double> start, Location<double> end) {
+				return end.Sub(start).distanceFrom(Location<double>.ORIGO) / SPEED;
 			}
 		}
 	}
