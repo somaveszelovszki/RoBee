@@ -1,8 +1,16 @@
 ﻿using Microsoft.Azure.Devices;
 
+using RoBee.Utils;
+
 namespace RoBee {
 	namespace Manager {
 		class Drone {
+
+			/// <summary>
+			/// The speed of the drones. [m/sec]
+			/// </summary>
+			public static readonly double SPEED = 10.0;
+
 			public string Id { get; set; }
 
 			/// <summary>
@@ -17,6 +25,10 @@ namespace RoBee {
 			public Drone(string id = null, long airTime = 0L) {
 				Id = id;
 				AirTime = airTime;
+			}
+
+			public double getTravelTime(Location<double> start, Location<double> end) {
+				return end.Sub(start).distanceFrom(Location<double>.ORIGO) / SPEED;
 			}
 		}
 	}
